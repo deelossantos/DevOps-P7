@@ -11,7 +11,7 @@ Feature: TopUp Account
     Then The new balance of his euro account should now be 110
 
 
-  Scenario: Add money to Revolut account using debit card
+  Scenario: Add money to Revolut account using bank account
     Given Danny has 99 euro in his euro Revolut account
     And Danny selects 100 euro as the topUp amount
     And  Danny selects his BankAccount as his topUp method
