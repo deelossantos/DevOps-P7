@@ -52,3 +52,17 @@ Feature: TopUp Account
     And  Danny selects his DebitCard as his topUp method
     When Danny tops up
     Then The new balance of his euro account should now be 225
+
+  Scenario: Sending money to a friend using Revolut.
+    Given Danny has 125 euro in his euro Revolut account
+    And Peter has 500 euro in his euro Revolut account
+    When Danny sends 100 euro to Peter to his euro Revolut account
+    Then The new balance for Danny account should now be 25
+    And The new balance for Peter account should now be 600
+
+  Scenario: Sending money to a friend using Revolut, not enough funds.
+    Given Danny has 125 euro in his euro Revolut account
+    And Peter has 500 euro in his euro Revolut account
+    When Danny sends 126 euro to Peter to his euro Revolut account
+    Then The new balance for Danny account should now be 125
+    And The new balance for Peter account should now be 500

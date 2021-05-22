@@ -22,4 +22,12 @@ public class Account {
     public void addFunds(double topUpAmount) {
         this.balance += topUpAmount;
     }
+
+    public void sendFunds(double sendAmount, Account receiver) {
+        if (this.balance>=sendAmount) {
+            receiver.addFunds(sendAmount);
+            this.balance -= sendAmount;
+        }
+        else {System.out.println("Not enough balance to complate the operation");}
+    }
 }
