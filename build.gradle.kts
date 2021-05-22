@@ -17,8 +17,3 @@ dependencies {
     testImplementation("io.cucumber:cucumber-java:6.10.3")
 
 }
-
-//tasks.getByName<Test>("test") {
-//    useJUnitPlatform()
-//    //useTestNG() //Use TestNG test framework
-//}
