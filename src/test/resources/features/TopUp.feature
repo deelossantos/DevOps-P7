@@ -10,7 +10,6 @@ Feature: TopUp Account
     When Danny tops up
     Then The new balance of his euro account should now be 110
 
-
   Scenario: Add money to Revolut account using bank account
     Given Danny has 99 euro in his euro Revolut account
     And Danny selects 100 euro as the topUp amount
@@ -38,7 +37,7 @@ Feature: TopUp Account
 
   Rule: The account balance shouldn't change if the topup payment request is rejected by the payment service
 
-  Scenario: Payment service rejects the request
+  Example: Payment service rejects the request
     Given Danny has 125 euro in his euro Revolut account
     And Danny selects 100 euro as the topUp amount
     And  Danny selects his DebitCard as his topUp method
@@ -46,21 +45,23 @@ Feature: TopUp Account
     When Danny tops up
     Then The new balance of his euro account should now be 125
 
-  Scenario: Payment service accepts the request
+  Example: Payment service accepts the request
     Given Danny has 125 euro in his euro Revolut account
     And Danny selects 100 euro as the topUp amount
     And  Danny selects his DebitCard as his topUp method
     When Danny tops up
     Then The new balance of his euro account should now be 225
 
-  Scenario: Sending money to a friend using Revolut.
+  Rule: Sending money to a friend using Revolut shouldn't complete if the sender account has not enough balance
+
+  Example: Sending money to a friend using Revolut.
     Given Danny has 125 euro in his euro Revolut account
     And Peter has 500 euro in his euro Revolut account
     When Danny sends 100 euro to Peter to his euro Revolut account
     Then The new balance for Danny account should now be 25
     And The new balance for Peter account should now be 600
 
-  Scenario: Sending money to a friend using Revolut, not enough funds.
+  Example: Sending money to a friend using Revolut, not enough funds.
     Given Danny has 125 euro in his euro Revolut account
     And Peter has 500 euro in his euro Revolut account
     When Danny sends 126 euro to Peter to his euro Revolut account
